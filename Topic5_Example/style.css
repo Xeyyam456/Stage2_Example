@@ -1,0 +1,23 @@
+body{
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.wrapper{
+    display: flex;
+    gap: 50px;
+    width: 500px;
+    height: 300px;
+    border: 1px solid grey;
+    align-items: center;
+    justify-content: center;
+}
+
+.player{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
