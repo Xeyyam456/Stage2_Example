@@ -94,50 +94,191 @@
 
 
 
-class BankAccount {
-    constructor(fullName, gmail, cardNumber, balance) {
-        this.fullName = fullName;
-        this.gmail = gmail;
-        this.cardNumber = cardNumber;
-        this.balance = balance;
+// class BankAccount {
+//     constructor(fullName, gmail, cardNumber, balance) {
+//         this.fullName = fullName;
+//         this.gmail = gmail;
+//         this.cardNumber = cardNumber;
+//         this.balance = balance;
+//     }
+//     showInfo() {
+//         console.log(`Full Name: ${this.fullName}`);
+//         console.log(`Gmail: ${this.gmail}`);
+//         console.log(`Card Number: ${this.cardNumber}`);
+//         console.log(`Balance: ${this.balance}`);
+//     }
+// }
+// class personalAccount extends BankAccount {
+//     constructor(fullName, gmail, cardNumber, balance, personalID) {
+//         super(fullName, gmail, cardNumber, balance);
+//         this.personalID = personalID;
+
+//     }
+
+//     showInfo() {
+//         super.showInfo();
+//         console.log(`Personal ID: ${this.personalID}`);
+//     }   
+
+//     deposit(amount) {
+//         this.balance += amount;
+//         console.log(`${amount} manat elave edildi. yeni balans ${this.balance} manatdir`);
+//     }
+//     withdraw(amount) {
+//         if (amount > this.balance) {
+//             console.log(`Yetersiz balans. Emeliyyat ugursuz oldu.`);
+//         } else {
+//             this.balance -= amount;
+//             console.log(`${amount} manat cekildi. yeni balans ${this.balance} manatdir`);
+//         }
+// }
+// }
+
+// const account1 = new personalAccount("John Doe", "john.doe@example.com", "1234567890", 2000 , "987654321");
+// // console.log(account1);
+// account1.showInfo();
+// account1.deposit(500); 
+// account1.withdraw(200);
+
+
+
+
+
+
+// class PasswordLength     {
+//     constructor(password) {
+//         this.password = password;
+//     }
+//     #checkLength() {
+//         if (this.password.length < 6) {
+//             console.log("Password is strong.");
+//         } else {
+//             console.log("Password is weak.");
+//         }
+//     }
+
+//      set Password(value) {
+
+
+//         this.password = value;
+//         this.#checkLength();
+//     }
+
+//     get Password() {
+//         return this.password;
+//     }   
+
+// }
+
+// const myPassword = new PasswordLength("abc1233");
+// myPassword.Password = "newpa";  
+// myPassword.Password;
+
+
+
+
+// Conditions
+// A student name must not be empty.
+// The same student must not be added more than once.
+// If a student is not found when trying to remove, show a message in the console.
+// The students list must be modified only through class methods (not directly).
+// The course must start with an empty students array.
+
+
+
+
+
+
+// class Course {
+//     constructor(courseName) {
+//         this.courseName = courseName;
+//         this.students = [];
+//     }       
+//     addStudent(student) {
+//         if (!student.name) {
+//             console.log("Student name must not be empty.");
+//             return;
+//         }
+//         const exists = this.students.some(s => s.name === student.name);
+//         if (exists) {
+//             console.log(`Student ${student.name} is already enrolled.`);
+//             return;
+//         }
+//         this.students.push(student);
+//         console.log(`Student ${student.name} added to the course.`);
+//     }
+//     removeStudent(studentName) {
+//         const index = this.students.findIndex(s => s.name === studentName);
+//         if (index === -1) {
+//             console.log(`Student ${studentName} not found.`);
+//             return;
+//         }
+//         this.students.splice(index, 1);
+
+//         console.log(`Student ${studentName} removed from the course.`);
+//     }
+//     listStudents() {
+//         console.log(`Students in ${this.courseName}:`);
+//         this.students.forEach(student => {
+//             console.log(student.name);
+//         }
+//         );
+//     }
+
+// }
+// const course = new Course("Mathematics");
+// const student1 = { name: "Alice" };
+// const student2 = { name: "Bob" };
+// const student3 = { name: "Charlie" };
+// course.addStudent(student1);
+// course.addStudent(student2);
+// course.addStudent(student3);
+// course.listStudents();
+// course.removeStudent("Charlie");
+// course.removeStudent("Alice");
+// course.listStudents();
+
+
+
+
+
+class Praduct {
+    constructor(name, price) {
+        this.name = name;
+        this.price = price;
     }
-    showInfo() {
-        console.log(`Full Name: ${this.fullName}`);
-        console.log(`Gmail: ${this.gmail}`);
-        console.log(`Card Number: ${this.cardNumber}`);
-        console.log(`Balance: ${this.balance}`);
+    getTotalPrice() {
+        return this.price;
     }
 }
-class personalAccount extends BankAccount {
-    constructor(fullName, gmail, cardNumber, balance, personalID) {
-        super(fullName, gmail, cardNumber, balance);
-        this.personalID = personalID;
 
-    }
-
-    showInfo() {
-        super.showInfo();
-        console.log(`Personal ID: ${this.personalID}`);
+class Order  {
+    constructor() {
+        this.products = [];
     }   
-
-    deposit(amount) {
-        this.balance += amount;
-        console.log(`${amount} manat elave edildi. yeni balans ${this.balance} manatdir`);
+    addProduct(product) {
+        this.products.push(product);
     }
-    withdraw(amount) {
-        if (amount > this.balance) {
-            console.log(`Yetersiz balans. Emeliyyat ugursuz oldu.`);
-        } else {
-            this.balance -= amount;
-            console.log(`${amount} manat cekildi. yeni balans ${this.balance} manatdir`);
-        }
+    getOrderTotal() {
+        let total = 0;
+        this.products.forEach(product => {
+            total += product.getTotalPrice();
+        });
+        return total;
+    }   
 }
-}
+const cofe = new Praduct("latte", 3);
+const Phone = new Praduct("Xioami", 1400);
+const myOrder = new Order();
 
-const account1 = new personalAccount("John Doe", "john.doe@example.com", "1234567890", 2000 , "987654321");
-// console.log(account1);
-account1.showInfo();
-account1.deposit(500); 
-account1.withdraw(200);
+myOrder.addProduct(cofe);
+myOrder.addProduct(Phone);
+console.log(`Toplam deyer: $${myOrder.getOrderTotal()}`);
+
+
+
+
+
+
 
 
