@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Blog App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #f4f6f9;
+    }
+
+    .app-header {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 3rem 1rem;
+      border-radius: 0 0 30px 30px;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .blog-card {
+      transition: all 0.3s ease;
+      border: none;
+      border-radius: 15px;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .blog-title {
+      font-weight: 600;
+    }
+
+    .blog-body {
+      color: #555;
+    }
+
+    .delete-btn {
+      border-radius: 20px;
+    }
+
+    .form-card {
+      border-radius: 20px;
+      border: none;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-header">
+    <h1>📝 My Blog App</h1>
+    <p class="mb-0">Share your thoughts with the world</p>
+  </div>
+
+  <div class="container">
+
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-6">
+        <div class="card form-card">
+          <div class="card-body">
+            <h5 class="mb-3">Create Blog</h5>
+            <form id="blogForm">
+              <div class="mb-3">
+                <input type="text" id="title" class="form-control form-control-lg" placeholder="Blog title" required>
+              </div>
+
+              <div class="mb-3">
+                <textarea id="body" class="form-control" rows="4" placeholder="Write something..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100 btn-lg">
+                Publish
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" id="blogList"></div>
+  </div>
+
+  <script src="index.js"></script>
+  <script>
+   
+  </script>
+
+</body>
+</html>

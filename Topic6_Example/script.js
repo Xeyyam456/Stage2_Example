@@ -56,7 +56,6 @@
 //         }
 //     }
 
-
 // }
 
 // const myCar = new Car("Toyota", "Corolla", 2020, 40);
@@ -73,10 +72,6 @@
 // myCar.stopEngine()
 // // myCar.drive(10)
 
-
-
-
-
 // // myCar.checkFuel()
 // myCar.startEngine();
 // myCar.startEngine();
@@ -86,13 +81,8 @@
 // myCar.reFuel(5)
 // myCar.checkFuel()
 
-
-
 // const myCar2 = new Car("Honda", "Civic", 2019, 0 );
 // myCar2.startEngine();
-
-
-
 
 // class BankAccount {
 //     constructor(fullName, gmail, cardNumber, balance) {
@@ -118,7 +108,7 @@
 //     showInfo() {
 //         super.showInfo();
 //         console.log(`Personal ID: ${this.personalID}`);
-//     }   
+//     }
 
 //     deposit(amount) {
 //         this.balance += amount;
@@ -137,13 +127,8 @@
 // const account1 = new personalAccount("John Doe", "john.doe@example.com", "1234567890", 2000 , "987654321");
 // // console.log(account1);
 // account1.showInfo();
-// account1.deposit(500); 
+// account1.deposit(500);
 // account1.withdraw(200);
-
-
-
-
-
 
 // class PasswordLength     {
 //     constructor(password) {
@@ -159,23 +144,19 @@
 
 //      set Password(value) {
 
-
 //         this.password = value;
 //         this.#checkLength();
 //     }
 
 //     get Password() {
 //         return this.password;
-//     }   
+//     }
 
 // }
 
 // const myPassword = new PasswordLength("abc1233");
-// myPassword.Password = "newpa";  
+// myPassword.Password = "newpa";
 // myPassword.Password;
-
-
-
 
 // Conditions
 // A student name must not be empty.
@@ -184,16 +165,11 @@
 // The students list must be modified only through class methods (not directly).
 // The course must start with an empty students array.
 
-
-
-
-
-
 // class Course {
 //     constructor(courseName) {
 //         this.courseName = courseName;
 //         this.students = [];
-//     }       
+//     }
 //     addStudent(student) {
 //         if (!student.name) {
 //             console.log("Student name must not be empty.");
@@ -238,47 +214,130 @@
 // course.removeStudent("Alice");
 // course.listStudents();
 
+// class Praduct {
+//     constructor(name, price) {
+//         this.name = name;
+//         this.price = price;
+//     }
+//     getTotalPrice() {
+//         return this.price;
+//     }
+// }
+
+// class Order  {
+//     constructor() {
+//         this.products = [];
+//     }
+//     addProduct(product) {
+//         this.products.push(product);
+//     }
+//     getOrderTotal() {
+//         let total = 0;
+//         this.products.forEach(product => {
+//             total += product.getTotalPrice();
+//         });
+//         return total;
+//     }
+// }
+// const cofe = new Praduct("latte", 3);
+// const Phone = new Praduct("Xioami", 1400);
+// const myOrder = new Order();
+
+// myOrder.addProduct(cofe);
+// myOrder.addProduct(Phone);
+// console.log(`Toplam deyer: $${myOrder.getOrderTotal()}`);
+
+// const inputText = document.querySelector("#movieInput");
+// const movieContainer = document.querySelector(".movieContainer");
+// const totalResult = document.querySelector("#totalResult");
+
+// inputText.addEventListener("keyup", function (event) {
+//   if (event.key === "Enter") {
+//     const URL = `http://www.omdbapi.com/?apikey=8b0a0cf0&s=${inputText.value}`;
+
+//     const Promise = fetch(URL);
+
+//     Promise.then((response) => response.json())
+//       .then((data) => {
+//         renderMovie(data.Search);
+//         totalResult.textContent = `Total Results: ${data.totalResults}`;
+//       })
+//       .catch(
+//         () =>
+//           (movieContainer.innerHTML = `<h2 class="errorMessage">Film tapilmadi</h2>`),
+//       );
+//   }
+// });
+
+// function renderMovie(movieData) {
+//   const content = movieData
+//     .map((movie) => {
+//       return `
+//         <div class="movieCard">
+//             <img src="${movie.Poster}" alt="${movie.Poster}" class="movieImage"/>
+//             <h2 class="movieTitle">${movie.Title}</h2>
+//             <p class="movieDescription">${movie.Year}</p>
+//         </div>`;
+//     })
+//     .join("");
+//   movieContainer.innerHTML = content;
+// }
+
+// const myPromise = new Promise((resolve, reject) => {
+//   const value = 8;
+
+//   if (value % 2 === 0) {
+//     resolve("Girilen eded cutdur");
+//   } else {
+//     reject("Girilen eded tekdir");
+//   }
+// });
+
+// let value = 10;
+
+// const myPromise = new Promise((resolve, reject) => {
+//
+//     resolve(value);
+//   reject("An error occurred");
+// });
+
+// myPromise
+//   .then((result) => result * 2)
+//   .then((value) => console.log(`Ilk deyer: ${value}`))
+//   .then((value2) => console.log(`Yeni deyer: ${value2}`))
+//   .catch((error) => console.log(error));
+
+const inputText = document.querySelector("#movieInput");
+const movieContainer = document.querySelector(".movieContainer");
+
+inputText.addEventListener("keyup", function (event) {
+  if (event.key === "Enter") {
+    const Search = inputText.value;
+
+    const URL = `https://www.omdbapi.com/?apikey=8b0a0cf0&s=${Search}`;
+
+    fetch(URL)
+      .then((response) => response.json())
+      .then((data) => {
+        renderMovie(data.Search.slice(0, 5));
+      })
+      .catch((err) => {
+        console.error("Xeta:", err);
+      });
 
 
-
-
-class Praduct {
-    constructor(name, price) {
-        this.name = name;
-        this.price = price;
+    function renderMovie(movieData) {
+      const content = movieData
+        .map((movie) => {
+          return `
+        <div class="movieCard">
+            <img src="${movie.Poster}" alt="${movie.Poster}" class="movieImage"/>
+            <h2 class="movieTitle">${movie.Title}</h2>
+            <p class="movieDescription">${movie.Year}</p>
+        </div>`;
+        })
+        .join("");
+      movieContainer.innerHTML = content;
     }
-    getTotalPrice() {
-        return this.price;
-    }
-}
-
-class Order  {
-    constructor() {
-        this.products = [];
-    }   
-    addProduct(product) {
-        this.products.push(product);
-    }
-    getOrderTotal() {
-        let total = 0;
-        this.products.forEach(product => {
-            total += product.getTotalPrice();
-        });
-        return total;
-    }   
-}
-const cofe = new Praduct("latte", 3);
-const Phone = new Praduct("Xioami", 1400);
-const myOrder = new Order();
-
-myOrder.addProduct(cofe);
-myOrder.addProduct(Phone);
-console.log(`Toplam deyer: $${myOrder.getOrderTotal()}`);
-
-
-
-
-
-
-
-
+  }
+});
